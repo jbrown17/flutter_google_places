@@ -11,8 +11,6 @@ import 'package:rxdart/rxdart.dart';
 class PlacesAutocompleteWidget extends StatefulWidget {
   final String apiKey;
   final String hint;
-  final Color queryTextColor;
-  final Color hintTextColor;
   final Location location;
   final num offset;
   final num radius;
@@ -27,9 +25,7 @@ class PlacesAutocompleteWidget extends StatefulWidget {
   PlacesAutocompleteWidget({
     @required this.apiKey,
     this.mode = Mode.fullscreen,
-//    this.hint = "Search",
-//    this.hintTextColor = Colors.white30,
-//    this.queryTextColor = Colors.white70,
+    this.hint = "Search",
     this.offset,
     this.location,
     this.radius,
