@@ -247,7 +247,7 @@ class _AppBarPlacesAutoCompleteTextFieldState
             fontSize: 16.0,
           ),
           decoration: InputDecoration(
-            hintText: widget.hint,
+            hintText: state.widget.hint,
             hintStyle: TextStyle(
               color: widget.queryTextColor,
               fontSize: 16.0,
