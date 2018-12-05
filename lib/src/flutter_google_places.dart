@@ -11,6 +11,8 @@ import 'package:rxdart/rxdart.dart';
 class PlacesAutocompleteWidget extends StatefulWidget {
   final String apiKey;
   final String hint;
+  final Color queryTextColor;
+  final Color hintTextColor;
   final Location location;
   final num offset;
   final num radius;
@@ -25,7 +27,9 @@ class PlacesAutocompleteWidget extends StatefulWidget {
   PlacesAutocompleteWidget({
     @required this.apiKey,
     this.mode = Mode.fullscreen,
-    this.hint = "Search",
+//    this.hint = "Search",
+//    this.hintTextColor = Colors.white30,
+//    this.queryTextColor = Colors.white70,
     this.offset,
     this.location,
     this.radius,
@@ -215,6 +219,16 @@ class _PlacesAutocompleteResult extends State<PlacesAutocompleteResult> {
 }
 
 class AppBarPlacesAutoCompleteTextField extends StatefulWidget {
+  AppBarPlacesAutoCompleteTextField({
+    this.hint = "Search",
+    this.hintTextColor = Colors.white30,
+    this.queryTextColor = Colors.white70,
+  });
+  
+  final String hint;
+  final Color hintTextColor;
+  final Color queryTextColor;
+  
   @override
   _AppBarPlacesAutoCompleteTextFieldState createState() =>
       _AppBarPlacesAutoCompleteTextFieldState();
@@ -228,19 +242,18 @@ class _AppBarPlacesAutoCompleteTextFieldState
     assert(state != null);
 
     return Container(
-        alignment: Alignment.topLeft,
-        margin: EdgeInsets.only(top: 4.0),
+        alignment: Alignment.centerLeft,
         child: TextField(
           controller: state._queryTextController,
           autofocus: true,
           style: TextStyle(
-            color: Colors.white70,
+            color: widget.queryTextColor,
             fontSize: 16.0,
           ),
           decoration: InputDecoration(
-            hintText: state.widget.hint,
+            hintText: widget.hint,
             hintStyle: TextStyle(
-              color: Colors.white30,
+              color: widget.queryTextColor,
               fontSize: 16.0,
             ),
             border: InputBorder.none,
@@ -264,7 +277,7 @@ class PoweredByGoogleImage extends StatelessWidget {
             Theme.of(context).brightness == Brightness.light
                 ? _poweredByGoogleWhite
                 : _poweredByGoogleBlack,
-            scale: 2.5,
+            scale: 1.5,
           ))
     ]);
   }
